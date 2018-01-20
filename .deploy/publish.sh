@@ -30,6 +30,8 @@ BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION:-"1.0.0-snapshot"}"}";
 
 TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
 
+[ -f "${TARBALL}" ] && echo "cannot find file." && exit 4;
+
 [[ ! $BUILD_VERSION =~ -snapshot$ ]] && \
 	npm publish "$TARBALL";
 [[ $BUILD_VERSION =~ -snapshot$ ]] && \
