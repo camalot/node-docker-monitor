@@ -26,5 +26,6 @@ PROJECT_NAME="${opt_project_name:-"${CI_PROJECT_NAME}"}";
 BUILD_VERSION=${CI_BUILD_VERSION:-"1.0.0-snapshot"};
 
 BUILD_PACKAGE=$(npm pack);
+echo "$BUILD_PACKAGE";
 mkdir -p "$base_dir/../dist/";
 mv "$BUILD_PACKAGE" "$base_dir/../dist/";
