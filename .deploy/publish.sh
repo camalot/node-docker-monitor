@@ -31,6 +31,6 @@ BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION:-"1.0.0-snapshot"}"}";
 TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
 
 [[ ! $BUILD_VERSION =~ -snapshot$ ]] && \
-	npm publish "$TARBALL" --tag "${BUILD_VERSION}" --tag "latest";
+	npm publish "$TARBALL";
 [[ $BUILD_VERSION =~ -snapshot$ ]] && \
-	npm publish "$TARBALL" --tag "${BUILD_VERSION}" --tag "latest-snapshot";
+	npm publish "$TARBALL" --tag "latest-snapshot";
