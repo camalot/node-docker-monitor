@@ -1,5 +1,5 @@
 {
-  "name": "camalot/node-docker-monitor",
+  "name": "@camalot/node-docker-monitor",
   "version": "1.1.0-snapshot",
   "description": "Docker monitor helping to maintain list of running containers",
   "main": "./lib/index.js",
@@ -8,7 +8,7 @@
     "test": "jshint **/*.js --verbose && eslint . && istanbul cover --include-all-sources $(npm bin)/mocha test/* --reporter spec"
   },
   "publishConfig": {
-    "registry": "https://artifactory.bit13.local/"
+    "registry": "https://artifactory.bit13.local/artifactory/api/npm/npm-local/"
   },
   "repository": {
     "type": "git",
