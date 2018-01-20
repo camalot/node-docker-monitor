@@ -1,4 +1,5 @@
 'use strict';
+// const should = require('chai').should;
 
 // let monitor = require('../lib/index.js');
 

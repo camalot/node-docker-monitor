@@ -32,6 +32,7 @@
     "dockerode": "2.2.10"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.16.0",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.5",
