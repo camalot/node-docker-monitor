@@ -33,8 +33,8 @@ BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION}"}";
 [[ -z "${BUILD_ORG// }" ]] && __error "Environment variable 'CI_DOCKER_ORGANIZATION' missing or is empty";
 
 TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
-
-[ -f "${TARBALL}" ] && echo "cannot find file." && exit 4;
+echo $TARBALL;
+[ -f "${TARBALL}" ] && __error "cannot find file." && exit 4;
 
 [[ ! $BUILD_VERSION =~ -snapshot$ ]] && \
 	npm publish "$TARBALL";
