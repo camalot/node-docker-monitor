@@ -26,7 +26,11 @@ get_opts "$@";
 
 PROJECT_NAME="${opt_project_name:-"${CI_PROJECT_NAME}"}";
 BUILD_VERSION="${opt_version:-"${CI_BUILD_VERSION:-"1.0.0-snapshot"}"}";
-BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION:-"1.0.0-snapshot"}"}";
+BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION}"}";
+
+[[ -z "${PROJECT_NAME// }" ]] && __error "Environment variable 'CI_PROJECT_NAME' missing or is empty";
+[[ -z "${BUILD_VERSION// }" ]] && __error "Environment variable 'CI_BUILD_VERSION' missing or is empty";
+[[ -z "${BUILD_ORG// }" ]] && __error "Environment variable 'CI_DOCKER_ORGANIZATION' missing or is empty";
 
 TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
 
