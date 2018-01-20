@@ -39,3 +39,6 @@ TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
 	npm publish "$TARBALL";
 [[ $BUILD_VERSION =~ -snapshot$ ]] && \
 	npm publish "$TARBALL";
+
+__info "published '$TARBALL'";
+exit 0;
