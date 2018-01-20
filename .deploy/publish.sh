@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e;
 base_dir=$(dirname "$0");
 
 # shellcheck source=.deploy/shared.sh
