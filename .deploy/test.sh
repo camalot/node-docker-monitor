@@ -7,11 +7,13 @@ base_dir=$(dirname "$0");
 source "${base_dir}/shared.sh";
 
 get_opts() {
-	while getopts ":n:v:" opt; do
+	while getopts ":n:v:o:" opt; do
 	  case $opt in
 			n) export opt_project_name="$OPTARG";
 			;;
 			v) export opt_version="$OPTARG";
+			;;
+			o) export opt_org="$OPTARG";
 			;;
 	    \?) __error "Invalid option $opt";
 	    ;;
@@ -23,4 +25,5 @@ get_opts() {
 get_opts "$@";
 
 PROJECT_NAME="${opt_project_name:-"${CI_PROJECT_NAME}"}";
-BUILD_VERSION=${CI_BUILD_VERSION:-"1.0.0-snapshot"};
+BUILD_VERSION="${opt_version:-"${CI_BUILD_VERSION:-"1.0.0-snapshot"}"}";
+BUILD_ORG="${opt_org:-"${CI_DOCKER_ORGANIZATION:-"1.0.0-snapshot"}"}";

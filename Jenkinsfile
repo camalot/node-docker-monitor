@@ -46,19 +46,19 @@ node ("node") {
 						sh script: 'npm install'
 					}
 					stage ("build") {
-						sh script: "${WORKSPACE}/.deploy/build.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}'"
+						sh script: "${WORKSPACE}/.deploy/build.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}' -o '${env.CI_DOCKER_ORGANIZATION}'"
 					}
 					stage ("test") {
 						sh script: "npm run test"
 					}
 					stage ("package") {
-						sh script: "${WORKSPACE}/.deploy/package.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}'"
+						sh script: "${WORKSPACE}/.deploy/package.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}' -o '${env.CI_DOCKER_ORGANIZATION}'"
 					}
 					stage ('publish') {
 						// this only will publish if the incominh branch IS develop
 						// withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.CI_ARTIFACTORY_CREDENTIAL_ID,
 						//  								usernameVariable: 'ARTIFACTORY_USERNAME', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
-							sh script:  "${WORKSPACE}/.deploy/publish.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}'"
+							sh script:  "${WORKSPACE}/.deploy/publish.sh -n '${env.CI_PROJECT_NAME}' -v '${env.CI_BUILD_VERSION}' -o '${env.CI_DOCKER_ORGANIZATION}'"
 						// }
 
 						Branch.publish_to_master(this)
