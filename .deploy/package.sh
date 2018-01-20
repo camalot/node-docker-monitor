@@ -29,3 +29,4 @@ BUILD_PACKAGE=$(npm pack);
 echo "$BUILD_PACKAGE";
 mkdir -p "$base_dir/../dist/";
 mv "$BUILD_PACKAGE" "$base_dir/../dist/";
+ls -lFA "$base_dir/../dist/"
