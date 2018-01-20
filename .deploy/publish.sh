@@ -38,4 +38,4 @@ TARBALL="${base_dir}/../dist/${BUILD_ORG}-${PROJECT_NAME}-${BUILD_VERSION}.tgz";
 [[ ! $BUILD_VERSION =~ -snapshot$ ]] && \
 	npm publish "$TARBALL";
 [[ $BUILD_VERSION =~ -snapshot$ ]] && \
-	npm publish "$TARBALL" --tag "latest-snapshot";
+	npm publish "$TARBALL";
