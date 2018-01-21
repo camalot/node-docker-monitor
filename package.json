@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "test": "jshint **/*.js --verbose && eslint . # && istanbul cover --include-all-sources $(npm bin)/mocha test/* --reporter spec"
+    "lint": "jshint **/*.js --verbose && eslint .",
+    "test": "$(npm bin)/istanbul test --include-all-sources ./node_modules/mocha/bin/_mocha -- --recursive --reporter spec"
   },
   "publishConfig": {
     "registry": "https://artifactory.bit13.local/artifactory/api/npm/npm-local/"
@@ -29,13 +30,15 @@
   "dependencies": {
     "async": "^2.6.0",
     "collections": "3.0.0",
-    "dockerode": "2.2.10"
+    "dockerode": "2.2.10",
+    "merge": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.16.0",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.5",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.0",
+    "rewire": "^3.0.2"
   }
 }
