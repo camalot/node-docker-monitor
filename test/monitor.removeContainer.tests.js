@@ -69,7 +69,7 @@ describe("monitor->removeContainer", done => {
 					return done("Should not be here");
 				})
 				.catch(err => {
-					expect(err).to.equal("no container to remove");
+					expect(err.message).to.equal("no container to remove");
 					done();
 				});
 		});

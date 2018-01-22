@@ -3,11 +3,11 @@ const chai = require("chai");
 const expect = chai.expect;
 const assert = chai.assert;
 const rewire = require("rewire");
-const monitor = rewire("../lib/index.js");
 
 describe("monitor->getContainerName", (done) => {
 	describe("when it has a name split by a slash", (done) => {
 		it("must return the second part of the name", (done) => {
+			let monitor = rewire("../lib/index.js");
 			let getContainerName = monitor.__get__("getContainerName");
 			getContainerName(["foo/bar"]).then( (result) => {
 				expect(result).to.equal("bar");
@@ -28,6 +28,7 @@ describe("monitor->getContainerName", (done) => {
 
 	describe("when it has a name with no slash", done => {
 		it("must return the entire name", done => {
+			let monitor = rewire("../lib/index.js");
 			let getContainerName = monitor.__get__("getContainerName");
 			getContainerName(["foo_bar"])
 				.then(result => {
@@ -52,6 +53,7 @@ describe("monitor->getContainerName", (done) => {
 
 	describe("when it has multiple items, with no slash in any of them", done => {
 		it("must return a combined name", done => {
+			let monitor = rewire("../lib/index.js");
 			let getContainerName = monitor.__get__("getContainerName");
 			getContainerName(["foo","bar"])
 				.then(result => {

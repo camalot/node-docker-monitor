@@ -55,7 +55,7 @@ describe("monitor->addContainer", done => {
 	});
 
 	describe("monitoring is not enabled", done => {
-		it("must reject the call", done => {
+		it("must just return the object", done => {
 			let monitor = rewire("../lib/index.js");
 			monitor.__set__("monitoringEnabled", i => {
 				return false;
@@ -67,16 +67,15 @@ describe("monitor->addContainer", done => {
 			expect(info).to.not.equal(null);
 			_addContainer(info)
 				.then(i => {
-					expect(i).to.not.equal(_infos[0]);
+					expect(i).to.equal(_infos[0]);
 					let x = _containerByName.get(i.Name);
 					let y = _containerById.get(i.Id);
-					expect(x).to.not.equal(i);
-					expect(y).to.not.equal(i);
-					return done("Should not be here");
+					expect(x).to.equal(undefined);
+					expect(y).to.equal(undefined);
+					return done();
 				})
 				.catch(err => {
-					expect(err).to.equal("monitoring disabled");
-					done();
+					done(err);
 				});
 		});
 	});
