@@ -4,6 +4,7 @@ node_modules/
 .npmrc
 coverage/
 dist/
+.env
 
 .vscode/*
 !.vscode/settings.json

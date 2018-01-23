@@ -6,7 +6,7 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "lint": "jshint **/*.js --verbose && eslint .",
-    "test": "$(npm bin)/istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha -- test/**/*.tests.js --recursive --reporter spec"
+    "test": "$(npm bin)/istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha -- test/**/*.tests.js --recursive --reporter spec && codecov"
   },
   "publishConfig": {
     "registry": "https://artifactory.bit13.local/artifactory/api/npm/npm-local/"
@@ -36,6 +36,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "codecov": "^3.0.0",
     "eslint": "^4.16.0",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.5",
