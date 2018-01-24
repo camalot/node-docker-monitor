@@ -2,11 +2,9 @@
 const chai = require("chai");
 chai.use(require("chai-as-promised"));
 const expect = chai.expect;
-const assert = chai.assert;
 chai.should();
 const rewire = require("rewire");
 
-const _handler = {};
 let _addContainerCalls = 0;
 let _removeContainerCalls = 0;
 let _addContainerSuccess = i => {
@@ -225,11 +223,7 @@ describe("monitor->updateContainer", done => {
 			let monitor = rewire("../lib/index.js");
 			monitor.__set__("addContainer", _addContainerSuccess);
 			monitor.__set__("removeContainer", _removeContainerSuccess);
-			let info = _infos[1];
 			let oldInfo = _infos[0];
-
-			let containersNamed = monitor.__get__("containerByName");
-			let containersId = monitor.__get__("containerById");
 
 			_addContainerCalls = 0;
 			_removeContainerCalls = 0;

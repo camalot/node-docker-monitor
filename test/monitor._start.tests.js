@@ -2,13 +2,8 @@
 const chai = require("chai");
 chai.use(require("chai-as-promised"));
 const expect = chai.expect;
-const assert = chai.assert;
 chai.should();
 const rewire = require("rewire");
-
-const chunk_data =
-	'{"status":"die","id":"81cde361ec7b069cc1ee32a4660176306a2b1d3a3eb52f96f17380f10e75d2e2","from":"m4all-next:15-0511-1104","time":1431403163}\n\n\n' +
-	'{"status":"start","id":"81cde361ec7b069cc1ee32a4660176306a2b1d3a3eb52f96f17380f10e75d2e2","from":"m4all-next:15-0511-1104","time":1431403163}';
 
 describe("monitor->start", done => {
 	describe("when updateContainers returns success, and getEvents returns success", done => {

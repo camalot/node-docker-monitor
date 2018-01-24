@@ -1,7 +1,6 @@
 "use strict";
 const chai = require("chai");
 const expect = chai.expect;
-const assert = chai.assert;
 const rewire = require("rewire");
 
 let _infos = [

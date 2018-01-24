@@ -2,7 +2,6 @@
 const chai = require("chai");
 chai.use(require("chai-as-promised"));
 const expect = chai.expect;
-const assert = chai.assert;
 chai.should();
 const rewire = require("rewire");
 

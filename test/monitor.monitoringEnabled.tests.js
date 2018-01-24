@@ -1,30 +1,8 @@
 "use strict";
 const chai = require("chai");
 const expect = chai.expect;
-const assert = chai.assert;
 const rewire = require("rewire");
 
-let _infos = [
-	{
-		Id: "81cde361ec7b069cc1ee32a4660176306a2b1d3a3eb52f96f17380f10e75d2e2",
-		Image: "m4all-next:15-0511-1104",
-		Names: ["/m4all-next"],
-		Command:
-			"/bin/sh -c '/bin/bash -c 'cd /home; mkdir data; node main/app.js''",
-		Created: 1431402173,
-		HostConfig: { NetworkMode: "default" },
-		Labels: null,
-		Ports: [
-			{
-				IP: "172.17.42.1",
-				PrivatePort: 3000,
-				PublicPort: 3002,
-				Type: "tcp"
-			}
-		],
-		Status: "Up About an hour"
-	}
-];
 
 describe("monitor->monitoringEnabled", done => {
 	describe("when monitoringAll is true and doesn't have Labels", done => {
