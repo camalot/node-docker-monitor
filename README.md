@@ -1,5 +1,7 @@
 # node-docker-monitor
 
+[![codecov](https://codecov.io/gh/camalot/node-docker-monitor/branch/develop/graph/badge.svg)](https://codecov.io/gh/camalot/node-docker-monitor)
+
 This library is developed to perform one simple function: help to maintain list of running Docker containers on a single host.
 
 More details about usage of **node-docker-monitor** with fully functional example https://memz.co/api-gateway-microservices-docker-node-js/
@@ -17,13 +19,27 @@ Following simple snippet starts monitoring containers on local host
 var monitor = require('node-docker-monitor');
 
 monitor({
-    onContainerUp: function(container) {
-        console.log('Container up: ', container)
-    },
+	onContainerUp: (container) => {
+		console.log('Container up: ', container)
+	},
 
-    onContainerDown: function(container) {
-        console.log('Container down: ', container)
-    }
+	onContainerDown: (container) => {
+		console.log('Container down: ', container)
+	},
+	onError: (err) => {
+		console.error(err);
+	},
+	onUpdateComplete: (containers) => {
+
+	},
+	onMonitorStarted: (monitor) => {
+
+	},
+	onMonitorStopped: (monitor) => {
+
+	}
+}).start().catch(err => {
+	console.error(`Monitor failed: ${err.message}`);
 });
 ```
 Container object has following structure
