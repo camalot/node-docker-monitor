@@ -16,9 +16,9 @@ npm install node-docker-monitor
 Following simple snippet starts monitoring containers on local host 
 
 ```javascript
-var monitor = require('node-docker-monitor');
+var monitor = require('@camalot/node-docker-monitor');
 
-monitor({
+monitor.init({
 	onContainerUp: (container) => {
 		console.log('Container up: ', container)
 	},
@@ -38,8 +38,10 @@ monitor({
 	onMonitorStopped: (monitor) => {
 
 	}
-}).start().catch(err => {
-	console.error(`Monitor failed: ${err.message}`);
+}).then(m => {
+	m.start().catch(err => {
+		console.error(`Monitor failed: ${err.message}`);
+	});
 });
 ```
 Container object has following structure
