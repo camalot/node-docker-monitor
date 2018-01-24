@@ -39,6 +39,8 @@ node ("node") {
 			try {
 					stage ("install" ) {
 						deleteDir()
+						env.CODECOV_TOKEN = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "CODECOV_TOKEN")
+
 						Branch.checkout(this, env.CI_PROJECT_NAME)
 						Pipeline.install(this)
 						sh script: "npm version '${env.CI_BUILD_VERSION}' --no-git-tag-version"
